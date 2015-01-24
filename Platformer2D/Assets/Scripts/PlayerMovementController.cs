@@ -22,6 +22,11 @@ public class PlayerMovementController : MonoBehaviour {
 	void Update () {
 		hor = Input.GetAxis ("Horizontal");
 		ver = Input.GetAxis ("Vertical");
+		if(Mathf.Sign(hor) == -1 || Mathf.Sign(hor) == 1){
+			Vector3 scale = tform.localScale;
+			scale.x = Mathf.Sign(hor);
+			tform.localScale = scale;
+		}
 		tform.Translate (Vector3.right * hor * speed * Time.deltaTime);
 
 	}
